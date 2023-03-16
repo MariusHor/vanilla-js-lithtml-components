@@ -45,7 +45,7 @@ export default class Sidebar extends Component {
       <ul class=${`list ${className}__list`}>
         ${components.map(
           component => html` <li>
-            <button class="button" @click=${handleFeatureSelect} data-bindTo=${component.id}>
+            <button class="button feature-btn" @click=${handleFeatureSelect} data-bindTo=${component.id}>
               ${component.name}
             </button>
           </li>`,

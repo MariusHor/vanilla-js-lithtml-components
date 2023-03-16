@@ -64,7 +64,10 @@ export default class TicTacToe extends Component {
     const { history, stepNumber } = this.state;
 
     const currentPlay = history[stepNumber];
-    const winner = calculateWinner(currentPlay.squares);
+
+    const win = calculateWinner(currentPlay.squares);
+    const winner = win?.winner;
+    const winningPos = win?.winningPos;
 
     let status;
 
@@ -76,6 +79,7 @@ export default class TicTacToe extends Component {
 
     return html`
       ${BoardC.update({
+        winningPos,
         squares: currentPlay.squares,
         action: handleClick,
         className: 'game-board',

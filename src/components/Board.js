@@ -29,7 +29,9 @@ export default class Board extends Component {
 
   render() {
     const { steps, id } = this;
-    const { action, squares, className } = this.props;
+    const { action, squares, className, winningPos } = this.props;
+
+    const findWinningSquares = step => (winningPos ? winningPos.some(pos => pos === step) : false);
 
     const generateSquares = (...slice) =>
       repeat(
@@ -39,7 +41,7 @@ export default class Board extends Component {
           this.setChild(Button, step, {
             text: squares[step.i],
             action: action.bind(this, step.i),
-            className: 'button--square',
+            className: findWinningSquares(step.i) ? 'button--square active' : 'button--square',
           }),
       );
 

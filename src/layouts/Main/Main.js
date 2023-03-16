@@ -1,6 +1,6 @@
 import { html } from 'lit-html';
 import { Component } from '@lib';
-import { hasConnected, hasDisconnected } from '@utils';
+import { hasConnected, hasDisconnected, toggleActive } from '@utils';
 import Features from '@components/features';
 import Sidebar from '../Sidebar/Sidebar';
 
@@ -28,6 +28,9 @@ export default class Main extends Component {
   }
 
   handleFeatureSelect = event => {
+    const featureSelectBtns = document.querySelectorAll('.feature-btn');
+    toggleActive(featureSelectBtns, event.target, 'active');
+
     this.setState({
       selectedFeatureId: event.target.dataset.bindto,
     });

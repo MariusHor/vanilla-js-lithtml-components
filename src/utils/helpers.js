@@ -16,3 +16,8 @@ export const loadStateFromStorage = key => {
     return undefined;
   }
 };
+
+export const toggleActive = (list, target, className) => {
+  list.forEach(item => item.classList.remove(className));
+  target.classList.add(className);
+};
