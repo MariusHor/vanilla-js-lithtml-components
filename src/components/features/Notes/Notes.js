@@ -2,7 +2,7 @@ import { html } from 'lit-html';
 import { nanoid } from 'nanoid';
 import { Component } from '@lib';
 import { Form, List, Feature } from '@components';
-import { loadStateFromStorage, saveStateToStorage, pubSub } from '@utils';
+import { loadStateFromStorage, saveStateToStorage, hasConnected, hasDisconnected } from '@utils';
 import { LOCAL_STORAGE_NOTES_KEY } from '@constants';
 
 import './Notes.scss';
@@ -15,22 +15,20 @@ export default class Notes extends Component {
   }
 
   onConnected() {
+    const { name, id } = this;
+
+    hasConnected({ name, id });
+
     this.state = loadStateFromStorage(LOCAL_STORAGE_NOTES_KEY) || {
       notes: [],
       value: '',
     };
-
-    pubSub.publish('connected', {
-      name: this.name,
-      id: this.id,
-    });
   }
 
   onDisconnected() {
-    pubSub.publish('disconnected', {
-      name: this.name,
-      id: this.id,
-    });
+    const { name, id } = this;
+
+    hasDisconnected({ name, id });
   }
 
   handleSubmit = event => {

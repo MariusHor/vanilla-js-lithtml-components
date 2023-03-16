@@ -1,7 +1,7 @@
 import { html } from 'lit-html';
 import { Component } from '@lib';
 import { Button, Feature } from '@components';
-import { pubSub } from '@utils';
+import { hasConnected, hasDisconnected } from '@utils';
 
 export default class Clock extends Component {
   setup() {
@@ -12,24 +12,22 @@ export default class Clock extends Component {
   }
 
   onConnected() {
+    const { name, id } = this;
+
+    hasConnected({ name, id });
+
     this.state = {
       isClockActive: true,
       date: new Date(),
     };
 
-    pubSub.publish('connected', {
-      name: this.name,
-      id: this.id,
-    });
-
     if (this.state.isClockActive) this.interval = setInterval(() => this.tick(), 1000);
   }
 
   onDisconnected() {
-    pubSub.publish('disconnected', {
-      name: this.name,
-      id: this.id,
-    });
+    const { name, id } = this;
+
+    hasDisconnected({ name, id });
 
     clearInterval(this.interval);
   }

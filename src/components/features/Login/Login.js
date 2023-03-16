@@ -1,7 +1,7 @@
 import { html } from 'lit-html';
 import { Component } from '@lib';
 import { Feature } from '@components';
-import { pubSub } from '@utils';
+import { hasConnected, hasDisconnected } from '@utils';
 
 export default class Login extends Component {
   setup() {
@@ -9,19 +9,17 @@ export default class Login extends Component {
   }
 
   onConnected() {
-    this.state = { isLoggedIn: false };
+    const { name, id } = this;
 
-    pubSub.publish('connected', {
-      name: this.name,
-      id: this.id,
-    });
+    hasConnected({ name, id });
+
+    this.state = { isLoggedIn: false };
   }
 
   onDisconnected() {
-    pubSub.publish('disconnected', {
-      name: this.name,
-      id: this.id,
-    });
+    const { name, id } = this;
+
+    hasDisconnected({ name, id });
   }
 
   handleLoginClick = () => {

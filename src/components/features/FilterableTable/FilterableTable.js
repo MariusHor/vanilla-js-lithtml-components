@@ -1,7 +1,7 @@
 import { html } from 'lit-html';
 import { Component } from '@lib';
 import { Feature, SearchBar, ProductTable } from '@components';
-import { pubSub } from '@utils';
+import { hasConnected, hasDisconnected } from '@utils';
 import productsData from './data';
 
 import './Filterabletable.scss';
@@ -14,24 +14,22 @@ export default class FilterableTable extends Component {
   }
 
   onConnected() {
+    const { name, id } = this;
+
+    hasConnected({ name, id });
+
     this.state = {
       filterText: '',
       inStockOnly: false,
     };
 
-    pubSub.publish('connected', {
-      name: this.name,
-      id: this.id,
-    });
-
     this.products = productsData;
   }
 
   onDisconnected() {
-    pubSub.publish('disconnected', {
-      name: this.name,
-      id: this.id,
-    });
+    const { name, id } = this;
+
+    hasDisconnected({ name, id });
   }
 
   handleFilterTextChange = filterText => {

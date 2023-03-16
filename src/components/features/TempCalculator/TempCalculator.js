@@ -1,7 +1,7 @@
 import { html } from 'lit-html';
 import { Component } from '@lib';
 import { Feature, TemperatureInput } from '@components';
-import { pubSub } from '@utils';
+import { hasConnected, hasDisconnected } from '@utils';
 import { toCelsius, toFahrenheit, tryConvert } from './helpers';
 
 import './TempCalculator.scss';
@@ -12,22 +12,20 @@ export default class TempCalculator extends Component {
   }
 
   onConnected() {
+    const { name, id } = this;
+
+    hasConnected({ name, id });
+
     this.state = {
       temperature: '',
       scale: 'c',
     };
-
-    pubSub.publish('connected', {
-      name: this.name,
-      id: this.id,
-    });
   }
 
   onDisconnected() {
-    pubSub.publish('disconnected', {
-      name: this.name,
-      id: this.id,
-    });
+    const { name, id } = this;
+
+    hasDisconnected({ name, id });
   }
 
   handleCelsiusChange = temperature => {

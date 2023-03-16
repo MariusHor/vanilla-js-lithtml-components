@@ -1,7 +1,7 @@
 import { html } from 'lit-html';
 import { repeat } from 'lit-html/directives/repeat.js';
 import { Component } from '@lib';
-import { pubSub } from '@utils';
+import { hasConnected, hasDisconnected } from '@utils';
 import Note from './Note';
 
 export default class List extends Component {
@@ -10,17 +10,15 @@ export default class List extends Component {
   }
 
   onConnected() {
-    pubSub.publish('connected', {
-      name: this.name,
-      id: this.id,
-    });
+    const { name, id } = this;
+
+    hasConnected({ name, id });
   }
 
   onDisconnected() {
-    pubSub.publish('disconnected', {
-      name: this.name,
-      id: this.id,
-    });
+    const { name, id } = this;
+
+    hasDisconnected({ name, id });
   }
 
   render() {

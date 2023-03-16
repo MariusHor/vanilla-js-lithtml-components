@@ -1,6 +1,6 @@
 import { html } from 'lit-html';
 import { Component } from '@lib';
-import { pubSub } from '@utils';
+import { hasConnected, hasDisconnected } from '@utils';
 
 import './Sidebar.scss';
 
@@ -10,17 +10,15 @@ export default class Sidebar extends Component {
   }
 
   onConnected() {
-    pubSub.publish('connected', {
-      name: this.name,
-      id: this.id,
-    });
+    const { name, id } = this;
+
+    hasConnected({ name, id });
   }
 
   onDisconnected() {
-    pubSub.publish('disconnected', {
-      name: this.name,
-      id: this.id,
-    });
+    const { name, id } = this;
+
+    hasDisconnected({ name, id });
   }
 
   sidebarRight = () => {
