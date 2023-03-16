@@ -1,0 +1,14 @@
+.feature--notes {
+  .form {
+    margin-bottom: 2rem;
+  }
+  .note {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 2px 4px;
+    padding: 1rem;
+    border-radius: 3px;
+    width: 100%;
+  }
+}

@@ -1,7 +1,14 @@
 {
   "rules": {
-
   },
+  "overrides": [
+    {
+      "files": ["*.js"],
+      "rules": {
+        "import/extensions": "off"
+      }
+    }
+  ],
   "env": {
     "es6": true,
     "browser": true
