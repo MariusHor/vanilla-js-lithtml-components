@@ -1,0 +1,46 @@
+{
+  "rules": {
+
+  },
+  "env": {
+    "es6": true,
+    "browser": true
+  },
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+},
+  "plugins": [
+    "prettier"
+],
+"extends": [
+  "airbnb-base",
+  "prettier"
+],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx"],
+        "moduleDirectory": ["src", "node_modules"]
+      },
+      "alias": {
+        "extensions": [".js", ".jsx"],
+        "map": [
+          ["", "./src"],
+          ["@assets", "./src/assets"],
+          ["@components", "./src/components"],
+          ["@layouts", "./src/layouts"],
+          ["@constants", "./src/constants"],
+          ["@core", "./src/core"],
+          ["@lib", "./src/lib"],
+          ["@styles", "./src/styles"],
+          ["@utils", "./src/utils"]
+        ]
+      }
+    }
+  }
+}

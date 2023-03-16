@@ -1,0 +1,25 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "modules": false
+      }
+    ]
+  ],
+  "plugins": [
+      ["babel-plugin-module-resolver", {
+        "alias": {
+          "": "./src",
+          "@assets": "./src/assets",
+          "@components": "./src/components",
+          "@layouts": "./src/layouts",
+          "@constants": "./src/constants",
+          "@core": "./src/core",
+          "@lib": "./src/lib",
+          "@styles": "./src/styles",
+          "@utils": "./src/utils"
+        }
+      }]
+    ]
+}
