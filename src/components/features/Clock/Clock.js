@@ -1,7 +1,7 @@
 import { html } from 'lit-html';
 import { Component } from '@lib';
 import { Button, Feature } from '@components';
-import pubSub from '@utils';
+import { pubSub } from '@utils';
 
 export default class Clock extends Component {
   setup() {

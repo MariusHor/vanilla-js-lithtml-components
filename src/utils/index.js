@@ -1,3 +1,2 @@
-import pubSub from './pubSub';
-
-export default pubSub;
+export { loadStateFromStorage, saveStateToStorage } from './helpers';
+export { default as pubSub } from './pubSub';

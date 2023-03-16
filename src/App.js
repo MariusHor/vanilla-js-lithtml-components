@@ -1,7 +1,7 @@
 import { html } from 'lit-html';
 import { Header, Main } from '@layouts';
 import { Component } from '@lib';
-import pubSub from '@utils';
+import { pubSub } from '@utils';
 
 import './App.scss';
 

@@ -1,6 +1,6 @@
 import { html } from 'lit-html';
 import { Component } from '@lib';
-import pubSub from '@utils';
+import { pubSub } from '@utils';
 
 export default class Button extends Component {
   onConnected() {

@@ -25,6 +25,13 @@
   }
 }
 
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
 .button {
   border: 0;
   border-radius: 5px;
