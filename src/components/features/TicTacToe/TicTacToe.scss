@@ -1,0 +1,24 @@
+.feature--tic-tac-toe {
+  .game-board {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .board-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.4rem;
+  }
+
+  .button--square {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    padding: 0;
+  }
+
+  .game-info {
+    margin-top: 2rem;
+  }
+}

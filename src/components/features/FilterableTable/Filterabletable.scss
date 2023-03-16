@@ -1,0 +1,20 @@
+.feature--products-table {
+  text-align: center;
+
+  form {
+    width: 100%;
+    padding: 0 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    input {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  table {
+    width: 100%;
+    margin-top: 2rem;
+  }
+}
