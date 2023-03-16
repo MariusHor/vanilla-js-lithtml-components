@@ -4,18 +4,22 @@ import { Feature } from '@components';
 import { pubSub } from '@utils';
 
 export default class Login extends Component {
+  setup() {
+    this.name = 'Login';
+  }
+
   onConnected() {
     this.state = { isLoggedIn: false };
 
     pubSub.publish('connected', {
-      name: this.constructor.name,
+      name: this.name,
       id: this.id,
     });
   }
 
   onDisconnected() {
     pubSub.publish('disconnected', {
-      name: this.constructor.name,
+      name: this.name,
       id: this.id,
     });
   }

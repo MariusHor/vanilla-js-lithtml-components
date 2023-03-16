@@ -3,16 +3,20 @@ import { Component } from '@lib';
 import { pubSub } from '@utils';
 
 export default class Move extends Component {
+  setup() {
+    this.name = 'Move';
+  }
+
   onConnected() {
     pubSub.publish('connected', {
-      name: this.constructor.name,
+      name: this.name,
       id: this.id,
     });
   }
 
   onDisconnected() {
     pubSub.publish('disconnected', {
-      name: this.constructor.name,
+      name: this.name,
       id: this.id,
     });
   }

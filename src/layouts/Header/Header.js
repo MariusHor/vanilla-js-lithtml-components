@@ -5,16 +5,20 @@ import { pubSub } from '@utils';
 import './Header.scss';
 
 export default class Header extends Component {
+  setup() {
+    this.name = 'Header';
+  }
+
   onConnected() {
     pubSub.publish('connected', {
-      name: this.constructor.name,
+      name: this.name,
       id: this.id,
     });
   }
 
   onDisconnected() {
     pubSub.publish('disconnected', {
-      name: this.constructor.name,
+      name: this.name,
       id: this.id,
     });
   }

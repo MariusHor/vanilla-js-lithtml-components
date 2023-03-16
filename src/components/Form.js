@@ -5,19 +5,20 @@ import Button from './Button';
 
 export default class Form extends Component {
   setup() {
+    this.name = 'Form';
     this.ButtonSubmitC = new Button();
   }
 
   onConnected() {
     pubSub.publish('connected', {
-      name: this.constructor.name,
+      name: this.name,
       id: this.id,
     });
   }
 
   onDisconnected() {
     pubSub.publish('disconnected', {
-      name: this.constructor.name,
+      name: this.name,
       id: this.id,
     });
   }

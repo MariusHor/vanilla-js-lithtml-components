@@ -3,16 +3,20 @@ import { Component } from '@lib';
 import { pubSub } from '@utils';
 
 export default class Button extends Component {
+  setup() {
+    this.name = 'Button';
+  }
+
   onConnected() {
     pubSub.publish('connected', {
-      name: this.constructor.name,
+      name: this.name,
       id: this.id,
     });
   }
 
   onDisconnected() {
     pubSub.publish('disconnected', {
-      name: this.constructor.name,
+      name: this.name,
       id: this.id,
     });
   }

@@ -8,6 +8,7 @@ import './Main.scss';
 
 export default class Main extends Component {
   setup() {
+    this.name = 'Main';
     this.SidebarLeftC = new Sidebar();
     this.SidebarRightC = new Sidebar();
 
@@ -16,14 +17,14 @@ export default class Main extends Component {
 
   onConnected() {
     pubSub.publish('connected', {
-      name: this.constructor.name,
+      name: this.name,
       id: this.id,
     });
   }
 
   onDisconnected() {
     pubSub.publish('disconnected', {
-      name: this.constructor.name,
+      name: this.name,
       id: this.id,
     });
   }

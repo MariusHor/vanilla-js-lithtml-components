@@ -8,6 +8,7 @@ import './TicTacToe.scss';
 
 export default class TicTacToe extends Component {
   setup() {
+    this.name = 'TicTacToe';
     this.BoardC = new Board();
   }
 
@@ -23,14 +24,14 @@ export default class TicTacToe extends Component {
     };
 
     pubSub.publish('connected', {
-      name: this.constructor.name,
+      name: this.name,
       id: this.id,
     });
   }
 
   onDisconnected() {
     pubSub.publish('disconnected', {
-      name: this.constructor.name,
+      name: this.name,
       id: this.id,
     });
   }

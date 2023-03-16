@@ -7,6 +7,10 @@ import { toCelsius, toFahrenheit, tryConvert } from './helpers';
 import './TempCalculator.scss';
 
 export default class TempCalculator extends Component {
+  setup() {
+    this.name = 'TempCalculator';
+  }
+
   onConnected() {
     this.state = {
       temperature: '',
@@ -14,14 +18,14 @@ export default class TempCalculator extends Component {
     };
 
     pubSub.publish('connected', {
-      name: this.constructor.name,
+      name: this.name,
       id: this.id,
     });
   }
 
   onDisconnected() {
     pubSub.publish('disconnected', {
-      name: this.constructor.name,
+      name: this.name,
       id: this.id,
     });
   }

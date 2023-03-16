@@ -5,6 +5,8 @@ import { pubSub } from '@utils';
 
 export default class Clock extends Component {
   setup() {
+    this.name = 'Clock';
+
     this.ButtonAdd = new Button();
     this.ButtonDel = new Button();
   }
@@ -16,7 +18,7 @@ export default class Clock extends Component {
     };
 
     pubSub.publish('connected', {
-      name: this.constructor.name,
+      name: this.name,
       id: this.id,
     });
 
@@ -25,7 +27,7 @@ export default class Clock extends Component {
 
   onDisconnected() {
     pubSub.publish('disconnected', {
-      name: this.constructor.name,
+      name: this.name,
       id: this.id,
     });
 

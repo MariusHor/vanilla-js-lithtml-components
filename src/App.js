@@ -7,6 +7,7 @@ import './App.scss';
 
 export default class App extends Component {
   setup() {
+    this.name = 'App';
     this.setChildren(Header, Main);
   }
 
@@ -19,14 +20,14 @@ export default class App extends Component {
     pubSub.subscribe('disconnected', this.handleDisconnectedComps);
 
     pubSub.publish('connected', {
-      name: this.constructor.name,
+      name: this.name,
       id: this.id,
     });
   }
 
   onDisconnected() {
     pubSub.publish('disconnected', {
-      name: this.constructor.name,
+      name: this.name,
       id: this.id,
     });
   }

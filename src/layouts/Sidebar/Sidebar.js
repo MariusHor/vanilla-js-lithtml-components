@@ -5,16 +5,20 @@ import { pubSub } from '@utils';
 import './Sidebar.scss';
 
 export default class Sidebar extends Component {
+  setup() {
+    this.name = 'Sidebar';
+  }
+
   onConnected() {
     pubSub.publish('connected', {
-      name: this.constructor.name,
+      name: this.name,
       id: this.id,
     });
   }
 
   onDisconnected() {
     pubSub.publish('disconnected', {
-      name: this.constructor.name,
+      name: this.name,
       id: this.id,
     });
   }
@@ -44,7 +48,7 @@ export default class Sidebar extends Component {
         ${components.map(
           component => html` <li>
             <button class="button" @click=${handleFeatureSelect} data-bindTo=${component.id}>
-              ${component.constructor.name}
+              ${component.name}
             </button>
           </li>`,
         )}

@@ -9,6 +9,7 @@ import './Notes.scss';
 
 export default class Notes extends Component {
   setup() {
+    this.name = 'Notes';
     this.FormC = new Form();
     this.ListC = new List();
   }
@@ -20,14 +21,14 @@ export default class Notes extends Component {
     };
 
     pubSub.publish('connected', {
-      name: this.constructor.name,
+      name: this.name,
       id: this.id,
     });
   }
 
   onDisconnected() {
     pubSub.publish('disconnected', {
-      name: this.constructor.name,
+      name: this.name,
       id: this.id,
     });
   }

@@ -5,6 +5,10 @@ import { pubSub } from '@utils';
 import Button from './Button';
 
 export default class Board extends Component {
+  setup() {
+    this.name = 'Board';
+  }
+
   onConnected() {
     this.steps = [];
 
@@ -13,14 +17,14 @@ export default class Board extends Component {
     }
 
     pubSub.publish('connected', {
-      name: this.constructor.name,
+      name: this.name,
       id: this.id,
     });
   }
 
   onDisconnected() {
     pubSub.publish('disconnected', {
-      name: this.constructor.name,
+      name: this.name,
       id: this.id,
     });
   }

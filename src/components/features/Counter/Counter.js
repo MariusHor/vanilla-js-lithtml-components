@@ -6,6 +6,7 @@ import { loadStateFromStorage, saveStateToStorage, pubSub } from '@utils';
 
 export default class Counter extends Component {
   setup() {
+    this.name = 'Counter';
     this.ButtonMinus = new Button();
     this.ButtonPlus = new Button();
   }
@@ -16,14 +17,14 @@ export default class Counter extends Component {
     };
 
     pubSub.publish('connected', {
-      name: this.constructor.name,
+      name: this.name,
       id: this.id,
     });
   }
 
   onDisconnected() {
     pubSub.publish('disconnected', {
-      name: this.constructor.name,
+      name: this.name,
       id: this.id,
     });
   }

@@ -4,16 +4,20 @@ import { pubSub } from '@utils';
 import TableRows from './TableRows';
 
 export default class ProductTable extends Component {
+  setup() {
+    this.name = 'ProductTable';
+  }
+
   onConnected() {
     pubSub.publish('connected', {
-      name: this.constructor.name,
+      name: this.name,
       id: this.id,
     });
   }
 
   onDisconnected() {
     pubSub.publish('disconnected', {
-      name: this.constructor.name,
+      name: this.name,
       id: this.id,
     });
   }

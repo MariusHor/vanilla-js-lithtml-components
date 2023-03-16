@@ -8,6 +8,7 @@ import './Filterabletable.scss';
 
 export default class FilterableTable extends Component {
   setup() {
+    this.name = 'FilterableTable';
     this.SearchBarC = new SearchBar();
     this.ProductTableC = new ProductTable();
   }
@@ -19,7 +20,7 @@ export default class FilterableTable extends Component {
     };
 
     pubSub.publish('connected', {
-      name: this.constructor.name,
+      name: this.name,
       id: this.id,
     });
 
@@ -28,7 +29,7 @@ export default class FilterableTable extends Component {
 
   onDisconnected() {
     pubSub.publish('disconnected', {
-      name: this.constructor.name,
+      name: this.name,
       id: this.id,
     });
   }
