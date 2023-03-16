@@ -1,6 +1,6 @@
 import { html } from 'lit-html';
 import { Component } from '@lib';
-import { pubSub } from '@utils';
+import { hasConnected, hasDisconnected } from '@utils';
 import { Board, Move, Feature } from '@components';
 import calculateWinner from './helpers';
 
@@ -8,10 +8,15 @@ import './TicTacToe.scss';
 
 export default class TicTacToe extends Component {
   setup() {
+    this.name = 'TicTacToe';
     this.BoardC = new Board();
   }
 
   onConnected() {
+    const { name, id } = this;
+
+    hasConnected({ name, id });
+
     this.state = {
       history: [
         {
@@ -21,18 +26,12 @@ export default class TicTacToe extends Component {
       stepNumber: 0,
       xIsNext: true,
     };
-
-    pubSub.publish('connected', {
-      name: this.constructor.name,
-      id: this.id,
-    });
   }
 
   onDisconnected() {
-    pubSub.publish('disconnected', {
-      name: this.constructor.name,
-      id: this.id,
-    });
+    const { name, id } = this;
+
+    hasDisconnected({ name, id });
   }
 
   handleClick = i => {

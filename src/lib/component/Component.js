@@ -96,14 +96,17 @@ export default class Component {
         const { Blueprint, number } = arg;
 
         for (let i = 0; i < number; i += 1) {
-          this[`${Blueprint.name}${i + 1}C`] = new Blueprint();
-          childComponents.push(this[`${Blueprint.name}${i + 1}C`]);
+          const component = new Blueprint();
+
+          this[`${component.name}${i + 1}C`] = component;
+          childComponents.push(this[`${component.name}${i + 1}C`]);
         }
       } else if (typeof arg === 'function') {
         const Blueprint = arg;
 
-        this[`${Blueprint.name}C`] = new Blueprint();
-        childComponents.push(this[`${Blueprint.name}C`]);
+        const component = new Blueprint();
+        this[`${component.name}C`] = component;
+        childComponents.push(this[`${component.name}C`]);
       }
       return childComponents;
     }, []);

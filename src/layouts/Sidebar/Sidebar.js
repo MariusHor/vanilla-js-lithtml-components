@@ -1,22 +1,24 @@
 import { html } from 'lit-html';
 import { Component } from '@lib';
-import { pubSub } from '@utils';
+import { hasConnected, hasDisconnected } from '@utils';
 
 import './Sidebar.scss';
 
 export default class Sidebar extends Component {
+  setup() {
+    this.name = 'Sidebar';
+  }
+
   onConnected() {
-    pubSub.publish('connected', {
-      name: this.constructor.name,
-      id: this.id,
-    });
+    const { name, id } = this;
+
+    hasConnected({ name, id });
   }
 
   onDisconnected() {
-    pubSub.publish('disconnected', {
-      name: this.constructor.name,
-      id: this.id,
-    });
+    const { name, id } = this;
+
+    hasDisconnected({ name, id });
   }
 
   sidebarRight = () => {
@@ -44,7 +46,7 @@ export default class Sidebar extends Component {
         ${components.map(
           component => html` <li>
             <button class="button" @click=${handleFeatureSelect} data-bindTo=${component.id}>
-              ${component.constructor.name}
+              ${component.name}
             </button>
           </li>`,
         )}

@@ -1,6 +1,6 @@
 import { html } from 'lit-html';
 import { Component } from '@lib';
-import { pubSub } from '@utils';
+import { hasConnected, hasDisconnected } from '@utils';
 import Features from '@components/features';
 import Sidebar from '../Sidebar/Sidebar';
 
@@ -8,6 +8,7 @@ import './Main.scss';
 
 export default class Main extends Component {
   setup() {
+    this.name = 'Main';
     this.SidebarLeftC = new Sidebar();
     this.SidebarRightC = new Sidebar();
 
@@ -15,17 +16,15 @@ export default class Main extends Component {
   }
 
   onConnected() {
-    pubSub.publish('connected', {
-      name: this.constructor.name,
-      id: this.id,
-    });
+    const { name, id } = this;
+
+    hasConnected({ name, id });
   }
 
   onDisconnected() {
-    pubSub.publish('disconnected', {
-      name: this.constructor.name,
-      id: this.id,
-    });
+    const { name, id } = this;
+
+    hasDisconnected({ name, id });
   }
 
   handleFeatureSelect = event => {

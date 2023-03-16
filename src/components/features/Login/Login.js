@@ -1,23 +1,25 @@
 import { html } from 'lit-html';
 import { Component } from '@lib';
 import { Feature } from '@components';
-import { pubSub } from '@utils';
+import { hasConnected, hasDisconnected } from '@utils';
 
 export default class Login extends Component {
-  onConnected() {
-    this.state = { isLoggedIn: false };
+  setup() {
+    this.name = 'Login';
+  }
 
-    pubSub.publish('connected', {
-      name: this.constructor.name,
-      id: this.id,
-    });
+  onConnected() {
+    const { name, id } = this;
+
+    hasConnected({ name, id });
+
+    this.state = { isLoggedIn: false };
   }
 
   onDisconnected() {
-    pubSub.publish('disconnected', {
-      name: this.constructor.name,
-      id: this.id,
-    });
+    const { name, id } = this;
+
+    hasDisconnected({ name, id });
   }
 
   handleLoginClick = () => {
