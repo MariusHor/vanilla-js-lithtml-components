@@ -1,0 +1,17 @@
+.sidebar {
+  text-align: center;
+
+  &--left__list {
+    button {
+      width: 100%;
+    }
+  }
+
+  &--right__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
