@@ -49,7 +49,7 @@ Through this project, I learned how to create reusable and customizable componen
 
 I also learned about lit-html and how it can be used to create efficient and dynamic templates that update only the parts that have changed. This can help improve the performance of the application and reduce the amount of unnecessary re-renderings.
 
-I started this project by creating a basic Component class that all other components will inherit from. The Component class has lifecycle methods like "onConnected" and "onDisconnected" that are called when a component is added or removed from the DOM. I also implemented the attributeChangedCallback method to handle changes in component attributes. I have also learned about the difference between debouncing and throttling function calls to control how many times we allow a function to be executed over time and based on the needs of the app I implemented the first one when calling the rerendering of the app. 
+I started this project by creating a basic Component class that all other components will inherit from. The Component class has lifecycle methods like "onConnected" and "onDisconnected" that are called when a component is added or removed from the DOM. I have also learned about the difference between debouncing and throttling function calls to control how many times we allow a function to be executed over time and based on the needs of the app I implemented the first one when calling the rerendering of the app. 
 
 As I wanted to test some real-life use cases I created several mini-apps like Tic-Tac-Toe, Notes app, etc. through the use of reusable components. These components use lit-html templates to render their UI and are easily customizable with props.
 
@@ -61,8 +61,8 @@ In the future, I would like to add more mini-apps to this project and further re
 
 ### Useful resources
 
-[lit-html documentation](https://lit.dev/docs/libraries/standalone-templates/)
-[MutationObserver API documentation](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)
+- [lit-html documentation](https://lit.dev/docs/libraries/standalone-templates/)
+- [MutationObserver API documentation](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)
 
 ## Author
 
